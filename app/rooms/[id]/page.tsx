@@ -1,11 +1,13 @@
+import getSignleRooms from "@/app/actions/getSingleRoom";
 import BookingForm from "@/components/BookingForm";
 import Heading from "@/components/Heading";
-import data from "@/data/rooms.json";
 import Image from "next/image";
 import Link from "next/link";
-function RoomPage({ params }) {
+
+async function RoomPage({ params }) {
   const { id } = params;
-  const room = data.find((room) => room.$id === id);
+
+  const room = await getSignleRooms(id);
 
   if (!room) {
     return <Heading title="Room Not Founds" />;
