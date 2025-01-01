@@ -26,14 +26,14 @@ const Header = () => {
                     Rooms
                   </Link>
                   {/* <!-- Logged In Only --> */}
-                  <a
-                    href="/bookings.html"
+                  <Link
+                    href="/bookings"
                     className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
                   >
                     Bookings
-                  </a>
+                  </Link>
                   <a
-                    href="/add-room.html"
+                    href="/room/add"
                     className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
                   >
                     Add Room
@@ -45,27 +45,27 @@ const Header = () => {
             <div className="ml-auto">
               <div className="ml-4 flex items-center md:ml-6">
                 {/* <!-- Logged Out Only --> */}
-                <a
-                  href="login.html"
+                <Link
+                  href="login"
                   className="mr-3 text-gray-800 hover:text-gray-600"
                 >
                   <i className="fa fa-sign-in"></i> Login
-                </a>
-                <a
-                  href="register.html"
+                </Link>
+                <Link
+                  href="register"
                   className="mr-3 text-gray-800 hover:text-gray-600"
                 >
                   <i className="fa fa-user"></i> Register
-                </a>
-                <a href="my-rooms.html">
+                </Link>
+                <Link href="room/my">
                   <i className="fa fa-building"></i> My Rooms
-                </a>
-                <a
-                  href="login.html"
+                </Link>
+                <Link
+                  href="login"
                   className="mx-3 text-gray-800 hover:text-gray-600"
                 >
                   <i className="fa fa-sign-out"></i> Sign Out
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -81,18 +81,18 @@ const Header = () => {
               Rooms
             </Link>
             {/* <!-- Logged In Only --> */}
-            <a
-              href="/bookings.html"
+            <Link
+              href="/bookings"
               className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
             >
               Bookings
-            </a>
-            <a
-              href="/add-room.html"
+            </Link>
+            <Link
+              href="/room/add"
               className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
             >
               Add Room
-            </a>
+            </Link>
           </div>
         </div>
       </header>
