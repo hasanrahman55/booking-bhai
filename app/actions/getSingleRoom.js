@@ -14,9 +14,6 @@ async function getSignleRooms(id) {
       id
     );
 
-    // Revalidate the cache for this path
-    // revalidatePath("/");
-
     return room;
   } catch (error) {
     console.log("Failed to get rooms", error);
