@@ -1,22 +1,9 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import checkAuth from "@/app/actions/checkAuth";
 
-interface AuthContextType {
-  isAuthenticated: boolean;
-  setIsAuthenticated: (value: boolean) => void;
-  currentUser: any; // Replace `any` with your user type
-  setCurrentUser: (user: any) => void; // Replace `any` with your user type
-}
+const AuthContext = createContext();
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-export const AuthProvider = ({ children }: { children: ReactNode }) => {
+export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -51,5 +38,3 @@ export const useAuth = () => {
   }
   return context;
 };
-
-export default AuthContext;
