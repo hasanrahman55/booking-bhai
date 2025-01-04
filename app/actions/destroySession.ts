@@ -5,7 +5,8 @@ import { cookies } from "next/headers";
 
 async function destroySession() {
   //retrive session from cookies
-  const sessionCookies = (await cookies()).get("appwrite-session");
+  // const sessionCookies = (await cookies()).get("appwrite-session");
+  const sessionCookies = cookies().get("appwrite-session");
 
   if (!sessionCookies) {
     return {

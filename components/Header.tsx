@@ -1,12 +1,26 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import logo from "@/assets/images/logo.svg";
 import Image from "next/image";
 import destroySession from "@/app/actions/destroySession";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import checkAuth from "@/app/actions/checkAuth";
+
 const Header = () => {
   const router = useRouter();
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const fetchAuth = async () => {
+      const result = await checkAuth();
+      setIsAuthenticated(result.isAuthenticated);
+    };
+
+    fetchAuth();
+  }, []);
 
   async function handleLogout() {
     const { error, success } = await destroySession();
@@ -40,18 +54,23 @@ const Header = () => {
                     Rooms
                   </Link>
                   {/* <!-- Logged In Only --> */}
-                  <Link
-                    href="/bookings"
-                    className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
-                  >
-                    Bookings
-                  </Link>
-                  <a
-                    href="/room/add"
-                    className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
-                  >
-                    Add Room
-                  </a>
+                  {isAuthenticated && (
+                    <>
+                      <Link
+                        href="/bookings"
+                        className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                      >
+                        Bookings
+                      </Link>
+
+                      <Link
+                        href="/room/add"
+                        className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                      >
+                        Add Room
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -59,27 +78,36 @@ const Header = () => {
             <div className="ml-auto">
               <div className="ml-4 flex items-center md:ml-6">
                 {/* <!-- Logged Out Only --> */}
-                <Link
-                  href="login"
-                  className="mr-3 text-gray-800 hover:text-gray-600"
-                >
-                  <i className="fa fa-sign-in"></i> Login
-                </Link>
-                <Link
-                  href="register"
-                  className="mr-3 text-gray-800 hover:text-gray-600"
-                >
-                  <i className="fa fa-user"></i> Register
-                </Link>
-                <Link href="room/my">
-                  <i className="fa fa-building"></i> My Rooms
-                </Link>
-                <button
-                  onClick={handleLogout}
-                  className="mx-3 text-gray-800 hover:text-gray-600"
-                >
-                  <i className="fa fa-sign-out"></i> Sign Out
-                </button>
+                {!isAuthenticated && (
+                  <>
+                    <Link
+                      href="login"
+                      className="mr-3 text-gray-800 hover:text-gray-600"
+                    >
+                      <i className="fa fa-sign-in"></i> Login
+                    </Link>
+                    <Link
+                      href="register"
+                      className="mr-3 text-gray-800 hover:text-gray-600"
+                    >
+                      <i className="fa fa-user"></i> Register
+                    </Link>
+                  </>
+                )}
+
+                {isAuthenticated && (
+                  <>
+                    <Link href="room/my">
+                      <i className="fa fa-building"></i> My Rooms
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="mx-3 text-gray-800 hover:text-gray-600"
+                    >
+                      <i className="fa fa-sign-out"></i> Sign Out
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -95,18 +123,23 @@ const Header = () => {
               Rooms
             </Link>
             {/* <!-- Logged In Only --> */}
-            <Link
-              href="/bookings"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
-            >
-              Bookings
-            </Link>
-            <Link
-              href="/room/add"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
-            >
-              Add Room
-            </Link>
+            {isAuthenticated && (
+              <>
+                <Link
+                  href="/bookings"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                >
+                  Bookings
+                </Link>
+
+                <Link
+                  href="/room/add"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                >
+                  Add Room
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </header>
