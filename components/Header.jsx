@@ -89,7 +89,7 @@ const Header = () => {
 
                 {isAuthenticated && (
                   <>
-                    <Link href="rooms/my">
+                    <Link href="/rooms/my">
                       <i className="fa fa-building"></i> My Rooms
                     </Link>
                     <button
