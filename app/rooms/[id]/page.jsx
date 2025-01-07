@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 async function RoomPage({ params }) {
-  const { id } = params;
+  const { id } = await params;
 
   const room = await getSignleRooms(id);
 
@@ -68,7 +68,7 @@ async function RoomPage({ params }) {
         </div>
       </div>
 
-      <BookingForm />
+      <BookingForm room={room} />
     </>
   );
 }
