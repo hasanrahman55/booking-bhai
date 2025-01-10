@@ -22,7 +22,12 @@ async function destroySession() {
     return {
       success: true,
     };
-  } catch (error) {}
+  } catch (error) {
+    console.log("Failed to destroy session", error);
+    return {
+      error: "Failed to destroy session",
+    };
+  }
 }
 
 export default destroySession;
