@@ -1,7 +1,5 @@
 "use client";
 import Link from "next/link";
-import logo from "@/assets/images/logo.svg";
-import Image from "next/image";
 import destroySession from "@/app/actions/destroySession";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
