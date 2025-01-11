@@ -25,17 +25,12 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-gray-100">
+      <header className="bg-white shadow-lg">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <Link href="/">
-                <Image
-                  className="h-12 w-12"
-                  src={logo}
-                  alt="Booking Bhai Logo"
-                  priority={true}
-                />
+                <h1 className="text-2xl font-bold">BookingBhai</h1>
               </Link>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
