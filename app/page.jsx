@@ -8,11 +8,13 @@ async function Home() {
   return (
     <>
       <Heading title="Available" />
-      {rooms.length > 0 ? (
-        rooms.map((room) => <RoomCard key={room.$id} room={room} />)
-      ) : (
-        <h3>No rooms found</h3>
-      )}
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-4">
+        {rooms.length > 0 ? (
+          rooms.map((room) => <RoomCard key={room.$id} room={room} />)
+        ) : (
+          <h3>No rooms found</h3>
+        )}
+      </div>
     </>
   );
 }
