@@ -30,24 +30,29 @@ function BookedRoomCard({ booking }) {
   };
 
   return (
-    <div className="bg-white shadow rounded-lg p-4 mt-4 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+    <div className="bg-white shadow-lg rounded-2xl p-6 mt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+      {/* Room Info */}
       <div>
-        <h4 className="text-lg font-semibold">{room.name}</h4>
-        <p className="text-sm text-gray-600">
-          <strong>Check In:</strong> {formatDate(booking.check_in)}
+        <h4 className="text-xl font-semibold text-gray-800">{room.name}</h4>
+        <p className="text-sm text-gray-600 mt-2">
+          <strong className="font-medium text-gray-700">Check In:</strong>{" "}
+          {formatDate(booking.check_in)}
         </p>
-        <p className="text-sm text-gray-600">
-          <strong>Check Out:</strong> {formatDate(booking.check_out)}
+        <p className="text-sm text-gray-600 mt-1">
+          <strong className="font-medium text-gray-700">Check Out:</strong>{" "}
+          {formatDate(booking.check_out)}
         </p>
       </div>
-      <div className="flex flex-col sm:flex-row w-full sm:w-auto sm:space-x-2 mt-2 sm:mt-0">
+
+      {/* Actions */}
+      <div className="flex flex-col sm:flex-row w-full sm:w-auto sm:space-x-3 mt-4 sm:mt-0">
         <Link
           href={`/rooms/${room.$id}`}
-          className="bg-blue-500 text-white px-4 py-2 rounded mb-2 sm:mb-0 w-full sm:w-auto text-center hover:bg-blue-700"
+          className="bg-blue-600 text-white px-5 py-2 rounded-lg text-center hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 transition duration-200 shadow-sm"
         >
           View Room
         </Link>
-        <CancelBookingButton bookingId={booking.$id} />
+        <CancelBookingButton bookingId={booking.$id} className="mt-3 sm:mt-0" />
       </div>
     </div>
   );

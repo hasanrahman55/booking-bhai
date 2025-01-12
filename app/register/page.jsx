@@ -22,49 +22,58 @@ function page() {
   }, [state]);
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-sm mt-20">
-        <form action={formAction}>
-          <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-            Register
+    <div className="flex items-center justify-center min-h-screen ">
+      <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md">
+        <form action={formAction} className="space-y-6">
+          {/* Heading */}
+          <h2 className="text-3xl font-bold text-center text-gray-800">
+            Create Your Account
           </h2>
+          <p className="text-center text-gray-600">
+            Join us by filling out the information below
+          </p>
 
-          <div className="mb-4">
+          {/* Name Input */}
+          <div>
             <label
               htmlFor="name"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray-700 font-medium mb-2"
             >
-              Name
+              Full Name
             </label>
             <input
               type="text"
               id="name"
               name="name"
-              className="border rounded w-full py-2 px-3"
+              className="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none"
+              placeholder="Enter your name"
               required
             />
           </div>
 
-          <div className="mb-4">
+          {/* Email Input */}
+          <div>
             <label
               htmlFor="email"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray-700 font-medium mb-2"
             >
-              Email
+              Email Address
             </label>
             <input
               type="email"
               id="email"
               name="email"
-              className="border rounded w-full py-2 px-3"
+              className="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none"
+              placeholder="Enter your email"
               required
             />
           </div>
 
-          <div className="mb-4">
+          {/* Password Input */}
+          <div>
             <label
               htmlFor="password"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray-700 font-medium mb-2"
             >
               Password
             </label>
@@ -72,15 +81,17 @@ function page() {
               type="password"
               id="password"
               name="password"
-              className="border rounded w-full py-2 px-3"
+              className="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none"
+              placeholder="Enter your password"
               required
             />
           </div>
 
-          <div className="mb-6">
+          {/* Confirm Password Input */}
+          <div>
             <label
               htmlFor="confirm-password"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray-700 font-medium mb-2"
             >
               Confirm Password
             </label>
@@ -88,26 +99,30 @@ function page() {
               type="password"
               id="confirm-password"
               name="confirm-password"
-              className="border rounded w-full py-2 px-3"
+              className="block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none"
+              placeholder="Confirm your password"
               required
             />
           </div>
 
-          <div className="flex flex-col gap-5">
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
-            >
-              Register
-            </button>
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-200 transition duration-200"
+          >
+            Register
+          </button>
 
-            <p>
-              Have an account?
-              <Link href="login" className="text-blue-500">
-                Login
-              </Link>
-            </p>
-          </div>
+          {/* Login Link */}
+          <p className="text-center text-gray-600">
+            Already have an account?{" "}
+            <Link
+              href="login"
+              className="text-blue-500 font-medium hover:underline"
+            >
+              Login here
+            </Link>
+          </p>
         </form>
       </div>
     </div>

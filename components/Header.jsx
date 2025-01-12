@@ -28,16 +28,10 @@ const Header = () => {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <Link href="/">
-                <h1 className="text-2xl font-bold">BookingBhai</h1>
+                <h1 className="text-2xl font-bold">Booking Bhai</h1>
               </Link>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  <Link
-                    href="/"
-                    className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
-                  >
-                    Rooms
-                  </Link>
                   {/* <!-- Logged In Only --> */}
                   {isAuthenticated && (
                     <>
@@ -66,7 +60,7 @@ const Header = () => {
                 {!isAuthenticated && (
                   <>
                     <Link
-                      href="login"
+                      href="/login"
                       className="mr-3 text-gray-800 hover:text-gray-600"
                     >
                       <i className="fa fa-sign-in"></i> Login

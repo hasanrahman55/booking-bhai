@@ -19,9 +19,11 @@ export default function RootLayout({ children }) {
   return (
     <AuthWrapper>
       <html lang="en">
-        <body className={`${inter.className} ${poppins.className}`}>
+        <body
+          className={`${inter.className} ${poppins.className}  bg-[#f7f9fa]`}
+        >
           <Header />
-          <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+          <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 ">
             {children}
           </main>
           <Footer />
