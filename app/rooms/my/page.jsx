@@ -14,7 +14,7 @@ async function MyRooms() {
         {/* Rooms Section */}
         <div className="mt-6">
           {rooms.length > 0 ? (
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-1">
               {rooms.map((room) => (
                 <MyRoomCard key={room.$id} room={room} />
               ))}

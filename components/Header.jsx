@@ -23,28 +23,28 @@ const Header = () => {
 
   return (
     <>
-      <header className="bg-white shadow-lg">
+      <header className="bg-gradient-to-r from-blue-500 to-indigo-500 shadow-lg">
         <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center">
+            {/* Logo */}
+            <div className="flex items-center space-x-4">
               <Link href="/">
-                <h1 className="text-2xl font-bold">Booking Bhai</h1>
+                <h1 className="text-2xl font-bold text-white">Booking Bhai</h1>
               </Link>
-              <div className="hidden md:block">
+              <div className="hidden md:flex">
                 <div className="ml-10 flex items-baseline space-x-4">
-                  {/* <!-- Logged In Only --> */}
+                  {/* Logged In Only */}
                   {isAuthenticated && (
                     <>
                       <Link
                         href="/bookings"
-                        className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                        className="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-600"
                       >
                         Bookings
                       </Link>
-
                       <Link
                         href="/rooms/add"
-                        className="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                        className="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-blue-600"
                       >
                         Add Room
                       </Link>
@@ -53,35 +53,40 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            {/* <!-- Right Side Menu --> */}
+
+            {/* Right Side Menu */}
             <div className="ml-auto">
-              <div className="ml-4 flex items-center md:ml-6">
-                {/* <!-- Logged Out Only --> */}
+              <div className="flex items-center space-x-4">
+                {/* Logged Out Only */}
                 {!isAuthenticated && (
                   <>
                     <Link
                       href="/login"
-                      className="mr-3 text-gray-800 hover:text-gray-600"
+                      className="text-white hover:text-gray-200"
                     >
                       <i className="fa fa-sign-in"></i> Login
                     </Link>
                     <Link
-                      href="register"
-                      className="mr-3 text-gray-800 hover:text-gray-600"
+                      href="/register"
+                      className="text-white hover:text-gray-200"
                     >
                       <i className="fa fa-user"></i> Register
                     </Link>
                   </>
                 )}
 
+                {/* Logged In Only */}
                 {isAuthenticated && (
                   <>
-                    <Link href="/rooms/my">
+                    <Link
+                      href="/rooms/my"
+                      className="text-white hover:text-gray-200"
+                    >
                       <i className="fa fa-building"></i> My Rooms
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className="mx-3 text-gray-800 hover:text-gray-600"
+                      className="text-white hover:text-gray-200"
                     >
                       <i className="fa fa-sign-out"></i> Sign Out
                     </button>
@@ -92,28 +97,27 @@ const Header = () => {
           </div>
         </nav>
 
-        {/* <!-- Mobile menu --> */}
-        <div className="md:hidden">
+        {/* Mobile Menu */}
+        <div className="md:hidden bg-blue-600">
           <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             <Link
               href="/"
-              className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+              className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-500"
             >
               Rooms
             </Link>
-            {/* <!-- Logged In Only --> */}
+            {/* Logged In Only */}
             {isAuthenticated && (
               <>
                 <Link
                   href="/bookings"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-500"
                 >
                   Bookings
                 </Link>
-
                 <Link
-                  href="/room/add"
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                  href="/rooms/add"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-blue-500"
                 >
                   Add Room
                 </Link>
