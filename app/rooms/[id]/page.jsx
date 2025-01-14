@@ -81,9 +81,6 @@ async function RoomPage({ params }) {
 
           {/* Booking Form */}
           <div className="bg-white shadow-lg rounded-xl p-6 mt-8">
-            <h3 className="text-lg font-bold text-gray-800 mb-4">
-              Book This Room
-            </h3>
             <BookingForm room={room} />
           </div>
         </div>
