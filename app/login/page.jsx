@@ -6,9 +6,10 @@ import createSession from "../actions/createSession";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
+import { ClipLoader } from "react-spinners";
 
 function page() {
-  const [state, formAction] = useActionState(createSession, {});
+  const [state, formAction, isLoading] = useActionState(createSession, {});
   const router = useRouter();
   const { isAuthenticated, setIsAuthenticated } = useAuth();
 
@@ -16,14 +17,13 @@ function page() {
     if (state.error) toast.error(state?.error);
     if (state.success) {
       toast.success("Login successful");
-      console.log("Login successful");
       setIsAuthenticated(true);
       router.push("/");
     }
   }, [state]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen ">
+    <div className="flex items-center justify-center min-h-screen">
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md">
         <form action={formAction} className="space-y-6">
           {/* Heading */}
@@ -73,9 +73,14 @@ function page() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-200 transition duration-200"
+            className={`w-full py-2 rounded-lg font-medium transition duration-200 flex items-center justify-center ${
+              isLoading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-blue-600 hover:bg-blue-700 text-white"
+            }`}
+            disabled={isLoading}
           >
-            Login
+            {isLoading ? <ClipLoader size={20} color="#ffffff" /> : "Login"}
           </button>
 
           {/* Register Link */}

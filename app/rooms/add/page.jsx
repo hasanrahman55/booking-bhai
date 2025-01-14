@@ -5,9 +5,10 @@ import { useActionState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import createRoom from "@/app/actions/createRoom";
+import { ClipLoader } from "react-spinners";
 
 function AddRoomPage() {
-  const [state, formAction] = useActionState(createRoom, {});
+  const [state, formAction, isLoading] = useActionState(createRoom, {});
   const router = useRouter();
   useEffect(() => {
     if (state.error) toast.error(state?.error);
@@ -194,8 +195,18 @@ function AddRoomPage() {
           <div className="flex flex-col gap-5">
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+              className={` px-4 py-2 rounded ${
+                isLoading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-blue-500 text-white hover:bg-blue-700 "
+              }`}
+              disabled={isLoading}
             >
+              {isLoading ? (
+                <ClipLoader size={20} color="#ffffff" />
+              ) : (
+                "Add Room"
+              )}
               Save
             </button>
           </div>

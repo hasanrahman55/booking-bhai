@@ -6,9 +6,10 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import createUser from "../actions/createUser";
 import { useAuth } from "@/context/authContext";
+import { ClipLoader } from "react-spinners";
 
 function page() {
-  const [state, formAction] = useActionState(createUser, {});
+  const [state, formAction, isLoading] = useActionState(createUser, {});
   const router = useRouter();
   const { isAuthenticated, setIsAuthenticated } = useAuth();
 
@@ -108,8 +109,11 @@ function page() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-200 transition duration-200"
+            className={`w-full bg-blue-600 text-white font-medium py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-200 transition duration-200 ${
+              isLoading && "opacity-50 cursor-not-allowed"
+            }`}
           >
+            {isLoading && <ClipLoader color="white" size={20} />}
             Register
           </button>
 

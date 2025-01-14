@@ -5,9 +5,10 @@ import { useActionState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import bookRoom from "@/app/actions/bookRoom";
+import { ClipLoader } from "react-spinners";
 
 function BookingForm({ room }) {
-  const [state, formAction] = useActionState(bookRoom, {});
+  const [state, formAction, isLoading] = useActionState(bookRoom, {});
 
   const router = useRouter();
 
@@ -90,8 +91,11 @@ function BookingForm({ room }) {
         <div className="mt-6">
           <button
             type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800"
+            className={`w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 ${
+              isLoading && "opacity-50 cursor-not-allowed"
+            }`}
           >
+            {isLoading && <ClipLoader size={20} />}
             Book Room
           </button>
         </div>
